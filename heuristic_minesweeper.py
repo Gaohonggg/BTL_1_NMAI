@@ -3,7 +3,7 @@ import time
 
 x_axis = 20
 y_axis = 20
-mines_number = 50
+mines_number = 40
 get_mines_randomly_2d = 0
 
 ## Random board
@@ -15,10 +15,18 @@ grid[get_mines_randomly_2d] = -1
 ## Random start point
 x_start ,y_start = None, None
 while True:
-    x_start, _start = np.random.randint(0, x_axis), np.random.randint(0, y_axis)
+    x_start, y_start = np.random.randint(0, x_axis), np.random.randint(0, y_axis)
     if grid[x_start, y_start] == 9:
-        grid[x_start, y_start] = 0
-        break
+        count = 0
+        check_p = [(-1,-1),(0,-1),(1,-1),(-1,0),(1,0),(-1,1),(0,1),(1,1)]
+        for i,j in check_p[:]:
+            a,b =x_start+i,y_start+j
+            if a in range(0,x_axis) and b in range(0,y_axis):
+                if grid[a,b] == -1:
+                    count += 1
+        if count == 0: ## Make sure the start point is a spreadable point
+            grid[x_start, y_start] = 0
+            break
 
 ## untouch_lst : list of unchosen squares
 get_mines_randomly_2d = np.transpose(get_mines_randomly_2d).tolist()
@@ -126,12 +134,13 @@ start_time = time.time()
 check_mine_base_on_square_left(queue,grid,mine_found)
 end_time = time.time()
 
+print("List of mines found :")
 print(mine_found)
 
 ## Start unsuccessful algorithm : needs to choose random square to continue
 if not mine_found:
     print("Your first step, step on a number, must choose a random square")
-if len(mine_found) != 50:
+if len(mine_found) != mines_number:
     print("You get a case that u need to make a gacha square to keep moving")
 ## End unsuccessful algorithm
 
