@@ -143,7 +143,7 @@ def BFS(problem):
 
 
 def solve_bfs(board):
-    print("\nSolving with BFS...")
+    print("\nSolving with BFS Blind Search:")
     start_time = time.time()
 
     problem = Problem(board)
@@ -151,10 +151,10 @@ def solve_bfs(board):
     elapsed_time = time.time() - start_time
 
     if solution:
-        print("Found solution")
+        print("Solution:")
         for row in solution.state:
             print(row)
     else:
-        print("No possible solutions")
+        print("No solutions")
 
-    print("Elapsed time: " + str(elapsed_time))
+    print("Time: " + str(elapsed_time))

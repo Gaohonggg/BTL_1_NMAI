@@ -126,17 +126,17 @@ def DFS(problem):
 
 
 def solve_dfs(board):
-    print("\nSolving with DFS...")
+    print("\nSolving with DFS Blind Search:")
     start_time = time.time()
     problem = Problem(board)
     solution = DFS(problem)
     elapsed_time = time.time() - start_time
 
     if solution:
-        print("Found solution")
+        print("Solution:")
         for row in solution:
             print(row)
     else:
-        print("No possible solutions")
+        print("No solutions")
 
-    print("Elapsed time: " + str(elapsed_time))
+    print("Time: " + str(elapsed_time))
