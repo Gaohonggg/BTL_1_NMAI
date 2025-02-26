@@ -96,8 +96,9 @@ def shrink_p(queue): ## delete some around points in tuple that are already clic
 
 ## Actions after first random click at random start point by the algorithm
 queue, real_grid, show_grid = check_around(x_start,y_start,real_grid,show_grid,[])
+s_grid = show_grid.copy()
 queue =  shrink_p(queue)
-steps = [((x_start,y_start),show_grid)] ## steps: list of tuples, each tuple is a step move and state after that move
+steps = [((x_start,y_start),s_grid)] ## steps: list of tuples, each tuple is a step move and state after that move
 steps_to_win = [] ## wining step move list of algorithm
 type_of_step = ["Random click"] ## Type of step : either Click (click a square) or Flag (detect a bomb)
 ## Print the board after first move
@@ -122,16 +123,14 @@ def check_mine_base_on_square_left(queue, real_grid, show_grid, mine_found):
                     unknown += 1
                 else: p.remove((i,j))
             
-            s_grid= show_grid.copy()
-            r_grid= real_grid.copy()
-            
             if mine == real_grid[x,y]:
                 # if all mines are found => other squares near x,y is sure no-bomb => click all other squares
                 k= True
                 for i,j in p[:]:
                     a,b = x+i,y+j
                     if (a,b) not in mine_found and (a,b) in untouch_lst:
-                        new_queue,real_grid,show_grid = check_around(a,b,r_grid,s_grid)
+                        new_queue,real_grid,show_grid = check_around(a,b,real_grid,show_grid)
+                        s_grid= show_grid.copy()
                         steps.append(((a,b),s_grid))
                         steps_to_win.append((a,b))
                         type_of_step.append("Click")
@@ -145,7 +144,8 @@ def check_mine_base_on_square_left(queue, real_grid, show_grid, mine_found):
                     a,b = x+i,y+j
                     if (a,b) not in mine_found:
                         mine_found.append((a,b))
-                        s_grid[a][b] = -1
+                        show_grid[a][b] = -1
+                        s_grid= show_grid.copy()
                         steps.append(((a,b),s_grid))
                         steps_to_win.append((a,b))
                         type_of_step.append("Flag")
