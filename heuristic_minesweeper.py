@@ -99,7 +99,7 @@ queue, real_grid, show_grid = check_around(x_start,y_start,real_grid,show_grid,[
 queue =  shrink_p(queue)
 steps = [((x_start,y_start),show_grid)] ## steps: list of tuples, each tuple is a step move and state after that move
 steps_to_win = [] ## wining step move list of algorithm
-type_of_step = [] ## Type of step : either Click (click a square) or Flag (detect a bomb)
+type_of_step = ["Random click"] ## Type of step : either Click (click a square) or Flag (detect a bomb)
 ## Print the board after first move
 print("Start board : After first random move")
 print(show_grid)
