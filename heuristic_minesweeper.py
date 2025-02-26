@@ -10,6 +10,7 @@ get_mines_randomly_2d = 0
 real_grid = np.full((y_axis, x_axis), 9,dtype=int)
 show_grid = real_grid.copy()
 get_mines_randomly = np.random.choice(real_grid.size, mines_number, replace=False)
+## get_mines_randomly = [1,2,3,4]
 get_mines_randomly_2d = np.unravel_index(get_mines_randomly, real_grid.shape)
 real_grid[get_mines_randomly_2d] = -1
 ## Print the original board
