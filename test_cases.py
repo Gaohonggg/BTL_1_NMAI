@@ -1,7 +1,7 @@
 from Blind_Search_Sudoku import solve_bfs
 from Blind_Search_Sudoku import solve_dfs
 
-print("\n\nTesting on 6x6 board...")
+print("\n\nTest 6x6..")
 puzzle = [
     [6, 2, 0, 5, 0, 3],
     [0, 0, 0, 0, 0, 0],
@@ -17,7 +17,7 @@ for row in puzzle:
 solve_bfs(puzzle)
 solve_dfs(puzzle)
 
-print("\n\nTesting on 6x6 puzzle...")
+print("\n\nTest 6x6..")
 puzzle = [
     [0, 2, 0, 4, 0, 6],
     [0, 0, 6, 0, 2, 0],
@@ -34,7 +34,7 @@ for row in puzzle:
 solve_bfs(puzzle)
 solve_dfs(puzzle)
 
-print("\n\nTesting on invalid 9x9 puzzle...")
+print("\n\nTest 9x9..")
 puzzle = [[0, 2, 0, 0, 0, 0, 0, 0, 0],
           [3, 0, 1, 0, 0, 9, 0, 0, 0],
           [7, 0, 0, 0, 0, 4, 6, 2, 0],
@@ -52,7 +52,7 @@ for row in puzzle:
 solve_bfs(puzzle)
 solve_dfs(puzzle)
 
-print("\n\nTesting on 9x9 puzzle...")
+print("\n\nTest 9x9...")
 puzzle = [[3, 0, 0, 4, 1, 5, 2, 0, 0],
           [4, 0, 9, 7, 6, 0, 0, 0, 1],
           [0, 6, 0, 0, 2, 8, 4, 0, 0],
