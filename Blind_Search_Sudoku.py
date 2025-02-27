@@ -18,9 +18,9 @@ class Problem(object):
         return [number for number in values if number not in used]
 
     # Return ô trống đầu tiên (marked with 0)
-    def get_spot(self, board, state):
-        for row in range(board):
-            for column in range(board):
+    def get_spot(self, puzzle, state):
+        for row in range(puzzle):
+            for column in range(puzzle):
                 if state[row][column] == 0:
                     return row, column
 
@@ -159,11 +159,11 @@ def DFS(problem):
     return None
 
 
-def solve_bfs(board):
+def solve_bfs(puzzle):
     print("\nSolving with BFS Blind Search:")
     start_time = time.time()
 
-    problem = Problem(board)
+    problem = Problem(puzzle)
     solution = BFS(problem)
     elapsed_time = time.time() - start_time
 
@@ -177,10 +177,10 @@ def solve_bfs(board):
     print("Time: " + str(elapsed_time))
 
 
-def solve_dfs(board):
+def solve_dfs(puzzle):
     print("\nSolving with DFS Blind Search:")
     start_time = time.time()
-    problem = Problem(board)
+    problem = Problem(puzzle)
     solution = DFS(problem)
     elapsed_time = time.time() - start_time
 
