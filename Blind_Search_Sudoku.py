@@ -120,7 +120,6 @@ class Node:
 
 
 def BFS(problem):
-    # Tạo nút ban đầu của cây vấn đề chứa bảng gốc
     node = Node(problem.initial)
    # Kiểm tra xem bảng gốc có đúng không và trả lại ngay nếu hợp lệ
     if problem.goal_test(node.state):
@@ -142,6 +141,24 @@ def BFS(problem):
     return None
 
 
+def DFS(problem):
+    start = Node(problem.initial)
+    if problem.goal_test(start.state):
+        return start.state
+
+    stack = []
+    stack.append(start)
+
+    while stack:
+        node = stack.pop()
+        if problem.goal_test(node.state):
+            return node.state
+        # Thêm các trạng thái khả thi vào stack
+        stack.extend(node.expand(problem))
+
+    return None
+
+
 def solve_bfs(board):
     print("\nSolving with BFS Blind Search:")
     start_time = time.time()
@@ -153,6 +170,23 @@ def solve_bfs(board):
     if solution:
         print("Solution:")
         for row in solution.state:
+            print(row)
+    else:
+        print("No solutions")
+
+    print("Time: " + str(elapsed_time))
+
+
+def solve_dfs(board):
+    print("\nSolving with DFS Blind Search:")
+    start_time = time.time()
+    problem = Problem(board)
+    solution = DFS(problem)
+    elapsed_time = time.time() - start_time
+
+    if solution:
+        print("Solution:")
+        for row in solution:
             print(row)
     else:
         print("No solutions")

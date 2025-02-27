@@ -1,5 +1,5 @@
-from BFS_Sudoku import solve_bfs
-from DFS_Sudoku import solve_dfs
+from Blind_Search_Sudoku import solve_bfs
+from Blind_Search_Sudoku import solve_dfs
 
 print("\n\nTesting on 6x6 board...")
 board = [
